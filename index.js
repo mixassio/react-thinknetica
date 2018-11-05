@@ -1,3 +1,19 @@
-import { plus, minus } from './src/Ariphmetics';
+import React, { Component } from 'react';
+import ReactDom from 'react-dom';
 
-console.log(plus(3, 2), minus(3, 2))
+class App extends Component {
+  constructor(props) {
+    super(props);
+  }
+  
+  render() {
+    return (
+      <div>Hello, world</div>
+    );
+  }
+}
+
+ReactDom.render(
+  <App />,
+  document.getElementById('root')
+)

@@ -1,0 +1,24 @@
+{
+  "name": "react-thinknetica",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "parcel": "parcel",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mixassio/react-thinknetica.git"
+  },
+  "author": "Mixassio",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/mixassio/react-thinknetica/issues"
+  },
+  "homepage": "https://github.com/mixassio/react-thinknetica#readme",
+  "dependencies": {
+    "parcel-bundler": "^1.10.3",
+    "superagent": "^4.0.0-beta.5"
+  }
+}

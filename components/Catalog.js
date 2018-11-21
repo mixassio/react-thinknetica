@@ -1,31 +1,22 @@
-import React, { Component } from 'react';
-import products from '../constants/products';
+import React from 'react';
+import PropTypes from 'prop-types';
 import ProductCard from './productCard';
 
 /* eslint linebreak-style: ["error", "windows"] */
 
-class Catalog extends Component {
-  constructor(props) {
-    super(props);
-    this.state = { productsList: [] };
-  }
+const Catalog = ({ products }) => (
+  <div>
+    {
+      products.map(product => (
+        <ProductCard key={product.id} {...product} />
+      ))
+    }
+  </div>
+);
 
-  componentDidMount() {
-    this.setState({ productsList: products() });
-  }
-
-  render() {
-    return (
-        <div>
-          <ul>
-            {
-              this.state.productsList.map(prod => (
-                <li key={prod.id}><ProductCard prod={prod} /></li>
-              ))
-            }
-          </ul>
-        </div>
-    );
-  }
-}
+Catalog.propTypes = {
+  products: PropTypes.arrayOf(
+    PropTypes.shape(ProductCard.propTypes),
+  ),
+};
 export default Catalog;

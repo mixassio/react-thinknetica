@@ -1,8 +1,21 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import browserContext from '../browserContext';
 
 /* eslint linebreak-style: ["error", "windows"] */
-
+const BuyButton = () => (
+  <browserContext.Consumer>
+    {
+      browser => (
+        browser.getPlatform().type === 'desktop' ? (
+          <button>Desktop Buy</button>
+        ) : (
+          <button>Mobile Buy</button>
+        )
+      )
+    }
+  </browserContext.Consumer>
+);
 const TextBox = ({ title }) => (
     <span>{title}</span>
 );
@@ -22,11 +35,12 @@ const Image = ({
 );
 
 
-const ProductCard = ({ prod }) => (
+const ProductCard = ({ title, price, imageUrl }) => (
     <div>
-      <div><TextBox title={prod.title}/></div>
-      <div><Price price={prod.price}/></div>
-      <Image src={prod.imageUrl} alt={prod.title} />
+      <div><TextBox title={title}/></div>
+      <div><Price price={price}/></div>
+      <Image src={imageUrl} alt={title} />
+      <div><BuyButton /></div>
     </div>
 );
 

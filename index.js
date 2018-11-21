@@ -1,32 +1,36 @@
-import React, { Component } from 'react';
+import React, { Children } from 'react';
 import ReactDom from 'react-dom';
-import products from './constants/products';
-import ProductCard from './components/productCard';
+import Catalog from './components/Catalog';
 
-class Catalog extends Component {
-  constructor(props) {
-    super(props);
-    this.state = { productsList: [] };
-  }
-  componentDidMount() {
-    this.setState({ productsList: products() });
-  }
-  render() {
-    return (
-      <div>
-        <ul>
-          {
-            this.state.productsList.map((prod) => (
-              <li key={prod.id}><ProductCard prod={prod} /></li>
-            ))
-          }
-        </ul>
-      </div>
-    );
-  }
-}
+/* eslint linebreak-style: ["error", "windows"] */
+
+const Segment = ({ children, dashed, color }) => (
+  <div
+    style={{
+      border: `1px ${dashed ? 'dashed' : 'solid'} ${color}`,
+    }}
+    >
+      {Children.map(
+        children,
+        (child, key) => (
+          <div key={key} style={{ border: '1px solid red' }}>
+            {child}
+          </div>
+        ),
+      )}
+  </div>
+);
+Segment.defaultProps = {
+  color: 'black',
+};
 
 ReactDom.render(
-  <Catalog />,
-  document.getElementById('root')
-)
+  <Segment dashed>
+    <Catalog />
+    <div>
+      Second
+    </div>
+    {() => <div>Third</div>}
+  </Segment>,
+  document.getElementById('root'),
+);

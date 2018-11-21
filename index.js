@@ -39,7 +39,7 @@ ReactDom.render(
         Second
       </div>
       {() => <div>Third</div>}
-  </Segment>
+    </Segment>
   </browserContext.Provider>,
   document.getElementById('root'),
 );

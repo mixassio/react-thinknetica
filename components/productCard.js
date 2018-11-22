@@ -1,21 +1,16 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import browserContext from '../browserContext';
+import BasketContext from '../basketContext';
 
 /* eslint linebreak-style: ["error", "windows"] */
-const BuyButton = () => (
-  <browserContext.Consumer>
-    {
-      browser => (
-        browser.getPlatform().type === 'desktop' ? (
-          <button>Desktop Buy</button>
-        ) : (
-          <button>Mobile Buy</button>
-        )
-      )
-    }
-  </browserContext.Consumer>
+const BuyButton = ({ title, price }) => (
+  <BasketContext.Consumer>
+    {({ counter }) => (
+          <button onClick={() => counter(title, price)}>Add</button>
+    )}
+  </BasketContext.Consumer>
 );
+
 const TextBox = ({ title }) => (
     <span>{title}</span>
 );
@@ -40,7 +35,7 @@ const ProductCard = ({ title, price, imageUrl }) => (
       <div><TextBox title={title}/></div>
       <div><Price price={price}/></div>
       <Image src={imageUrl} alt={title} />
-      <div><BuyButton /></div>
+      <div><BuyButton title={title} price={price}/></div>
     </div>
 );
 

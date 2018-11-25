@@ -1,14 +1,14 @@
+/* eslint-disable linebreak-style */
 import React from 'react';
 import PropTypes from 'prop-types';
-import BasketContext from '../basketContext';
+import CartContext from '../cartContext';
 
-/* eslint linebreak-style: ["error", "windows"] */
 const BuyButton = ({ title, price }) => (
-  <BasketContext.Consumer>
+  <CartContext.Consumer>
     {({ counter }) => (
           <button onClick={() => counter(title, price)}>Add</button>
     )}
-  </BasketContext.Consumer>
+  </CartContext.Consumer>
 );
 
 const TextBox = ({ title }) => (
@@ -22,13 +22,11 @@ Price.propTypes = {
   price: PropTypes.number.isRequired,
 };
 
-
 const Image = ({
   src, alt, width = '150', height = '150',
 }) => (
-  <img src={src} alt={alt} widht={width} height={height} />
+  <img src={src} alt={alt} width={width} height={height} />
 );
-
 
 const ProductCard = ({ title, price, imageUrl }) => (
     <div>
@@ -38,6 +36,5 @@ const ProductCard = ({ title, price, imageUrl }) => (
       <div><BuyButton title={title} price={price}/></div>
     </div>
 );
-
 
 export default ProductCard;

@@ -4,3 +4,4 @@ dist
 .cache
 indexOld.js
 src/Github.js
+.idea

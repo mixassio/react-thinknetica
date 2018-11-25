@@ -1,8 +1,7 @@
+/* eslint-disable linebreak-style */
 import React from 'react';
 import PropTypes from 'prop-types';
 import ProductCard from './productCard';
-
-/* eslint linebreak-style: ["error", "windows"] */
 
 const Catalog = ({ products }) => (
   <div>

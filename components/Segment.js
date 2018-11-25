@@ -1,5 +1,5 @@
+/* eslint-disable linebreak-style */
 import React, { Children } from 'react';
-/* eslint linebreak-style: ["error", "windows"] */
 
 const Segment = ({ children, dashed, color }) => (
     <div

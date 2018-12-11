@@ -1,8 +1,8 @@
 /* eslint-disable linebreak-style */
 import React from 'react';
+import { Route, Switch, NavLink } from 'react-router-dom';
 import Catalog from './Catalog';
 import Cart from './Cart';
-import Segment from './Segment';
 import getProducts from '../constants/products';
 import CartContext from '../cartContext';
 
@@ -26,12 +26,21 @@ class App extends React.Component {
   }
 
   render() {
+    const { products, countPurchases } = this.state;
     return (
-      <CartContext.Provider value={this.state}>
-        <Segment dashed>
-          <Catalog products={ this.state.products } />
-          <Cart value={this.state.countPurchases} />
-        </Segment>
+      <CartContext.Provider value={ this.state }>
+        <ul>
+          <li><NavLink exact to='/'>Main</NavLink></li>
+          <li><NavLink to='/about'>About</NavLink></li>
+          <li><NavLink to='/products'>Catalog</NavLink></li>
+        </ul>
+        <Switch>
+          <Route path='/' exact render={() => (<div>
+            <Catalog products={ products } />
+            <Cart value={ countPurchases } />
+          </div>)} />
+          <Route path='/about' render={() => <div>About</div>} />
+        </Switch>
       </CartContext.Provider>
     );
   }

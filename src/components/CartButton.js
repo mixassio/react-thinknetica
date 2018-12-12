@@ -1,8 +1,10 @@
 /* eslint-disable linebreak-style */
 import React, { Component } from 'react';
-import CartContext from '../cartContext';
+import { Link } from 'react-router-dom';
 
-class Cart extends Component {
+import CartContext from '../../cartContext';
+
+class CartButton extends Component {
   constructor(props) {
     super(props);
     this.state = { value: props.value };
@@ -13,6 +15,7 @@ class Cart extends Component {
     this.setState(prevState => ({
       value: prevState.value + 1,
     }));
+    return <Link to='/cart'/>;
   }
 
   render() {
@@ -25,7 +28,7 @@ class Cart extends Component {
     );
   }
 }
-Cart.defaultProps = {
+CartButton.defaultProps = {
   value: 0,
 };
-export default Cart;
+export default CartButton;

@@ -1,12 +1,12 @@
 /* eslint-disable linebreak-style */
 import React from 'react';
 import PropTypes from 'prop-types';
-import CartContext from '../cartContext';
+import CartContext from '../../cartContext';
 
-const BuyButton = ({ title, price }) => (
+const BuyButton = ({ id, title, price, imageUrl }) => (
   <CartContext.Consumer>
     {({ counter }) => (
-          <button onClick={() => counter(title, price)}>Add</button>
+          <button onClick={() => counter(id, title, price, imageUrl)}>Add</button>
     )}
   </CartContext.Consumer>
 );
@@ -28,13 +28,16 @@ const Image = ({
   <img src={src} alt={alt} width={width} height={height} />
 );
 
-const ProductCard = ({ title, price, imageUrl }) => (
+const ProductCard = ({ id, title, price, imageUrl }) => {
+  // const { title, price, imageUrl } = product;
+  return (
     <div>
       <div><TextBox title={title}/></div>
       <div><Price price={price}/></div>
       <Image src={imageUrl} alt={title} />
-      <div><BuyButton title={title} price={price}/></div>
+      <div><BuyButton id={id} title={title} price={price} imageUrl={imageUrl}/></div>
     </div>
-);
+  );
+};
 
 export default ProductCard;
